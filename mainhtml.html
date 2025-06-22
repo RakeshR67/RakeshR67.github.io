@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakesh Reddy Yeduru - Professional Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #34495e; /* Wet Asphalt - Dark Grey for accents */
+            --secondary-accent: #2c3e50; /* Midnight Blue - darker grey for contrast/highlight */
+            --tertiary-accent: #f1c40f; /* Sunflower Yellow - for digital clock/center dots (remains for pop) */
+            --text-color: #34495e; /* Wet Asphalt - dark text on light bg */
+            --bg-color: #ecf0f1; /* Clouds - very light grey */
+            --secondary-bg: #ffffff; /* White - for cards */
+            --card-shadow: 0 8px 20px rgba(0,0,0,0.15); /* More pronounced shadow */
+            --border-color: #bdc3c7; /* Silver - subtle grey border */
+            --badge-bg: #e0e7e9; /* Light blue-grey for badges */
+            --badge-text: #2c3e50; /* Darker text for badges */
+            --muted-text: #7f8c8d; /* Asbestos - muted grey */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 56px; /* Space for fixed navbar */
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+            position: relative; /* For background pseudo-element and overall positioning */
+
+            /* Professional background pattern */
+            background-image: radial-gradient(#bdc3c7 1px, transparent 0);
+            background-size: 20px 20px;
+            background-position: 0 0;
+            background-attachment: fixed; /* Keep background fixed when scrolling */
+        }
+
+        .navbar {
+            background-color: var(--secondary-bg);
+            box-shadow: var(--card-shadow);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s;
+        }
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .nav-link { /* Targeting nav links specifically */
+            color: black !important; /* Make nav links black */
+            font-weight: bold !important; /* Make nav links bold */
+            transition: color 0.3s ease;
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: var(--secondary-accent) !important;
+            transform: scale(1.05); /* Slight scale on hover */
+        }
+        .navbar-toggler-icon {
+            filter: none;
+        }
+        .header-bg {
+            background-color: var(--primary-color);
+            color: #ffffff; /* This ensures text in header is white */
+            padding: 2rem 0;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            transition: background-color 0.5s ease;
+        }
+        .header-bg h1 { /* Specifically target h1 in header-bg */
+            color: #ffffff !important; /* Force white color for the main name heading */
+        }
+
+
+        /* Headings Styling for other sections */
+        h1:not(.header-bg h1), h2, h3, h4, h5, h6, .section-title {
+            color: black !important; /* Force black color for all other headings */
+            font-weight: bold !important; /* Force bold for all headings */
+        }
+
+        .profile-img-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--secondary-bg);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            margin: -75px auto 30px auto;
+            background-color: var(--secondary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            transition: box-shadow 0.3s ease;
+        }
+        .profile-img-container:hover {
+            box-shadow: 0 0 25px var(--primary-color); /* Pulse shadow on hover */
+        }
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block; /* Ensure it behaves as a block element */
+            max-width: 100%; /* Ensure it scales within its container */
+        }
+        .section-title {
+            border-bottom: 2px solid var(--primary-color); /* Border remains accent color */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .card {
+            background-color: var(--secondary-bg);
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.3s; /* For scroll animation */
+            opacity: 0; /* Initially hidden for animation */
+            transform: translateY(30px); /* Start position for animation */
+        }
+        .card.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card:hover {
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2); /* Lift on hover */
+        }
+        .footer {
+            background-color: var(--secondary-bg);
+            color: var(--text-color);
+            padding: 1.5rem 0;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            margin-top: 4rem;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .footer p {
+            color: var(--text-color);
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+            color: var(--secondary-accent); /* Darker grey on hover */
+        }
+        .project-link {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border-radius: 10px;
+            padding: 1rem;
+            display: block;
+            background-color: var(--secondary-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+        .project-link:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .list-group-item {
+            background-color: transparent;
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+        .list-group-item:not(:last-child) {
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .list-group-item strong {
+            color: var(--primary-color);
+        }
+        .badge-custom {
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 0.9em;
+            padding: 0.5em 0.75em;
+            border-radius: .35rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+            color: #ffffff;
+            position: relative; /* For button pulse */
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn-primary:hover {
+            background-color: var(--secondary-accent); /* Darker grey on hover */
+            border-color: var(--secondary-accent); /* Darker grey on hover */
+            transform: translateY(-2px) scale(1.02); /* Slight lift and scale */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease-out, height 0.4s ease-out;
+            z-index: -1;
+        }
+        .btn-primary:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+
+        /* Styles for clocks */
+        #analogClock {
+            background-color: var(--secondary-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+            box-shadow: var(--card-shadow);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        #digitalClock {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: black !important; /* Changed to black */
+            text-align: center;
+            margin-top: 1rem;
+            transition: color 0.3s;
+        }
+        .api-content {
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--muted-text);
+            padding: 1rem;
+        }
+        #weatherIcon {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+        #emailDisplay {
+            color: var(--secondary-accent); /* Use the new darker grey for email */
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#summary-section">
+                Rakesh R. Yeduru
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#course-info-section">Course Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#summary-section">Summary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-section">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education-section">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills-section">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience-section">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects-section">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#clocks-utilities-section">Utilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#api-integrations-section">APIs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="header-bg text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Rakesh Reddy Yeduru</h1>
+            <p class="lead">Passionate about solving business problems through Data Science and Machine Learning</p>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+        <div class="profile-img-container">
+        <img src="rakeshphoto.jpg" alt="Rakesh Reddy Yeduru Headshot" class="profile-img">
+        </div>
+
+        <!-- Welcome Message Section -->
+        <section id="welcome-section" class="card p-4 mb-5 text-center">
+            <h2 class="section-title">Welcome</h2>
+            <p id="welcomeMessage" class="fw-bold"></p>
+        </section>
+
+        <!-- Course Information Section (Moved to top) -->
+        <section id="course-info-section" class="card p-4 mb-5 text-center">
+            <h2 class="section-title">Course Information</h2>
+            <p>Learn more about the "Web Application Programming and Hacking" course and related hands-on projects.</p>
+            <a href="course.html" class="btn btn-primary btn-lg rounded-pill px-4 py-2 project-link">Go to Course Page</a>
+        </section>
+
+        <section id="summary-section" class="card p-4 mb-5">
+            <h2 class="section-title">Summary</h2>
+            <p class="text-center">Passionate about solving business problems through Data Science and Machine Learning, with systematic and creative application of skills which add tangible value to teams, businesses, and end-users. Committed to continuous learning and adopting new technologies, always seeking to enhance expertise.</p>
+        </section>
+
+        <section id="contact-section" class="card p-4 mb-5">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-info text-center">
+                <p><i class="bi bi-geo-alt-fill me-2"></i>817 Patterson Rd Apt A, Dayton, OH-45419</p>
+                <p><i class="bi bi-phone-fill me-2"></i>+1 (937) 313-6483</p>
+                <p id="emailDisplay">Email: <a href="mailto:yedururl@udayton.edu">yedururl@udayton.edu</a></p>
+                <button id="toggleEmailBtn" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Show/Hide Email</button>
+                <!-- Add more contact info if available, e.g., LinkedIn -->
+                <p class="mt-3"><i class="bi bi-linkedin me-2"></i><a href="#" target="_blank">LinkedIn Profile (Add your LinkedIn URL)</a></p>
+                <p><i class="bi bi-github me-2"></i><a href="https://github.com/your-github-username" target="_blank">GitHub Profile (Add your GitHub URL)</a></p>
+            </div>
+        </section>
+
+        <section id="education-section" class="card p-4 mb-5">
+            <h2 class="section-title">Education</h2>
+            <div class="mb-4">
+                <h4>University of Dayton</h4>
+                <p class="text-muted mb-1">Master of Science in Computer Science</p>
+                <p class="mb-0">Dayton, Ohio, USA | Expected May 2025</p>
+            </div>
+            <div>
+                <h4>Osmania University</h4>
+                <p class="text-muted mb-1">Bachelor of Engineering in Computer Science</p>
+                <p class="mb-0">Hyderabad, Telangana, India | GPA: 3.85 | June 2022</p>
+            </div>
+        </section>
+
+        <section id="skills-section" class="card p-4 mb-5">
+            <h2 class="section-title">Skills</h2>
+            <div class="mb-4">
+                <h5>Technical Skills:</h5>
+                <p>
+                    <span class="badge badge-custom me-2 mb-2">Python</span>
+                    <span class="badge badge-custom me-2 mb-2">Java</span>
+                    <span class="badge badge-custom me-2 mb-2">C</span>
+                    <span class="badge badge-custom me-2 mb-2">C++</span>
+                    <span class="badge badge-custom me-2 mb-2">MySQL</span>
+                    <span class="badge badge-custom me-2 mb-2">HTML</span>
+                    <span class="badge badge-custom me-2 mb-2">CSS</span>
+                </p>
+            </div>
+            <div class="mb-4">
+                <h5>Tools:</h5>
+                <p>
+                    <span class="badge badge-custom me-2 mb-2">Amazon S3</span>
+                    <span class="badge badge-custom me-2 mb-2">EC2</span>
+                    <span class="badge badge-custom me-2 mb-2">VPC</span>
+                    <span class="badge badge-custom me-2 mb-2">Cisco Packet Tracker</span>
+                    <span class="badge badge-custom me-2 mb-2">Microsoft Office (Excel, PowerPoint, Word)</span>
+                </p>
+            </div>
+            <div>
+                <h5>Frameworks:</h5>
+                <p>
+                    <span class="badge badge-custom me-2 mb-2">TensorFlow</span>
+                    <span class="badge badge-custom me-2 mb-2">OpenCV</span>
+                    <span class="badge badge-custom me-2 mb-2">ReactJS</span>
+                    <span class="badge badge-custom me-2 mb-2">Keras</span>
+                    <span class="badge badge-custom me-2 mb-2">Pandas</span>
+                    <span class="badge badge-custom me-2 mb-2">SQL</span>
+                </p>
+            </div>
+        </section>
+
+        <section id="experience-section" class="card p-4 mb-5">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="mb-4">
+                <h4>Software Engineer <span class="text-muted float-end">July 2022 - July 2023</span></h4>
+                <h5>LTI Mindtree</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">• Spearheaded critical optimizations for platform features, demonstrating proactive problem-solving skills as a Software Engineer at LTI MindTree.</li>
+                    <li class="list-group-item">• Applied innovative techniques to streamline data flow across microservices, showcasing exceptional proficiency in Kafka, and ensuring seamless communication between Flink, datastores, and the frontend.</li>
+                    <li class="list-group-item">• Excelled in large-scale application development, leveraging strategic thinking and cross-functional collaboration to achieve performance optimization and deliver high-impact solutions.</li>
+                    <li class="list-group-item">• Demonstrated a relentless drive for excellence, consistently pushing boundaries and delivering innovative solutions in software engineering.</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Intern, Cisco Cyber Ops Associate <span class="text-muted float-end">May 2021 - January 2022</span></h4>
+                <h5>Cisco NetAcad</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">• Acquired comprehensive knowledge in Security Operations and honed problem-solving abilities during the CyberOps Associate program at CISCO NetAcad.</li>
+                    <li class="list-group-item">• Developed expertise in detecting and analyzing intrusions, and proficient network monitoring skills, contributing to a robust cybersecurity skill set.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects-section" class="card p-4 mb-5">
+            <h2 class="section-title">Academic Projects</h2>
+            <div class="mb-4 project-link">
+                <h4>Stock Market Price Prediction using Ensembled Learning</h4>
+                <p>Built an Ensembled model of LSTM and Bi-GRU to predict stock market price upto n days. Worked in Tensorflow for model creation and Yahoo-finance API for stock market data.</p>
+            </div>
+            <div class="mb-4 project-link">
+                <h4>Breast Cancer Detection using Ensembled Learning</h4>
+                <p>Built This project that seeks to give a comparison of the decision tree, random forest, and logistic regression machine learning techniques that are frequently employed for breast cancer prediction.</p>
+            </div>
+            <div class="mb-4 project-link">
+                <h4>Air Canvas with OpenCV and WebRTC</h4>
+                <p>This is a tool which transforms hand gestures from camera to paint pixels on the canvas sends them on the network using WebRTC to a Backend server written in Flask and OpenCV Python for processing. Frontend implemented using OpenCV.js in order to draw the gestures on web.</p>
+            </div>
+        </section>
+
+        <section id="clocks-utilities-section" class="card p-4 mb-5">
+            <h2 class="section-title">Clocks & Utilities</h2>
+            <div class="row text-center">
+                <div class="col-md-6 mb-4">
+                    <h5>Digital Clock</h5>
+                    <div id="digitalClock"></div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h5>Analog Clock</h5>
+                    <canvas id="analogClock" width="200" height="200"></canvas>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h5>Text Reverser</h5>
+                    <div class="input-group mb-3">
+                        <input type="text" id="textInput" class="form-control rounded-pill" placeholder="Enter text to reverse">
+                        <button class="btn btn-primary rounded-pill ms-2" id="reverseTextBtn">Reverse Text</button>
+                    </div>
+                    <p class="fw-bold" id="reversedTextOutput"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="api-integrations-section" class="card p-4 mb-5">
+            <h2 class="section-title">API Integrations</h2>
+
+            <div class="mb-4">
+                <h5>Joke of the Moment</h5>
+                <div id="jokeContent" class="api-content">Loading a hilarious joke...</div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="mb-4 text-center">
+                <h5>Current Weather</h5>
+                <div id="weatherDisplay" class="api-content d-flex flex-column align-items-center">
+                    Loading weather data...
+                </div>
+                <button id="fetchWeatherBtn" class="btn btn-primary rounded-pill mt-3">Refresh Weather</button>
+            </div>
+
+        </section>
+
+
+    </main>
+
+    <footer class="footer text-center">
+        <div class="container">
+            <p>&copy; 2025 Rakesh Reddy Yeduru. All rights reserved.</p>
+            <!-- Flag Counter for page tracking - Updated with requested style -->
+            <a href="https://info.flagcounter.com/Ct2e"><img src="https://s05.flagcounter.com/countxl/Ct2e/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_15/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+            <p class="mt-3">Built with Bootstrap</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // === Utility functions for Cookies ===
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // === Document Ready Function (using jQuery) ===
+        $(document).ready(function() {
+            // --- Smooth Scrolling for Navigation Links ---
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                const targetId = $(this).attr('href');
+                $('html, body').animate({
+                    scrollTop: $(targetId).offset().top - $('.navbar').outerHeight() - 20 // Adjust for fixed navbar height and a little padding
+                }, 800);
+
+                // Collapse the navbar on mobile after clicking a link
+                const navbarCollapse = $('#navbarNav');
+                if (navbarCollapse.hasClass('show')) {
+                    navbarCollapse.collapse('hide');
+                }
+            });
+
+            // --- Welcome Message with Cookies ---
+            const welcomeMessageElem = $('#welcomeMessage');
+            let lastVisit = getCookie('lastVisit');
+            const currentTime = new Date();
+
+            if (!lastVisit) {
+                welcomeMessageElem.text("Welcome to my homepage for the first time!");
+            } else {
+                const lastVisitDate = new Date(lastVisit);
+                welcomeMessageElem.text(`Welcome back! Your last visit was ${lastVisitDate.toLocaleString()}`);
+            }
+            setCookie('lastVisit', currentTime.toISOString(), 365); // Store current time, valid for 365 days
+
+            // --- Digital Clock ---
+            function updateDigitalClock() {
+                const now = new Date();
+                $('#digitalClock').text(now.toLocaleTimeString());
+            }
+            setInterval(updateDigitalClock, 1000);
+            updateDigitalClock(); // Initial call
+
+            // --- Show/Hide Email ---
+            $('#toggleEmailBtn').on('click', function() {
+                $('#emailDisplay').fadeToggle(); // Using jQuery's fadeToggle for smooth animation
+            });
+
+            // --- Text Reverser ---
+            $('#textInput').on('input', function() { // Live update as user types
+                const inputText = $(this).val();
+                const reversedText = inputText.split('').reverse().join('');
+                $('#reversedTextOutput').text(reversedText);
+            });
+            $('#reverseTextBtn').on('click', function() {
+                // This button now simply forces a manual update if needed, but 'input' event handles live updates
+                const inputText = $('#textInput').val();
+                const reversedText = inputText.split('').reverse().join('');
+                $('#reversedTextOutput').text(reversedText);
+            });
+
+
+            // --- JokeAPI Integration (Fetch new joke every 1 minute) ---
+            const jokeContent = $('#jokeContent');
+            async function fetchJoke() {
+                jokeContent.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading joke...');
+                try {
+                    const response = await fetch('https://v2.jokeapi.dev/joke/Any?type=single');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    if (data.joke) {
+                        jokeContent.text(data.joke);
+                    } else if (data.setup && data.delivery) {
+                        jokeContent.html(`${data.setup}<br><br>${data.delivery}`);
+                    } else {
+                        jokeContent.text("Failed to fetch a joke.");
+                    }
+                } catch (error) {
+                    console.error("Error fetching joke:", error);
+                    jokeContent.text("Oops! Could not load a joke at the moment.");
+                }
+            }
+            fetchJoke(); // Initial joke fetch
+            setInterval(fetchJoke, 60 * 1000); // Fetch new joke every 1 minute (60,000 ms)
+
+            // --- Weatherbit.io API Integration ---
+            const weatherDisplay = $('#weatherDisplay');
+            const fetchWeatherBtn = $('#fetchWeatherBtn');
+            const WEATHERBIT_API_KEY = '8cbd2c8a034b44c29bf11ec7d78086c3'; // Your provided API key
+            const city = 'Dayton';
+            const state = 'OH';
+            const country = 'US'; // Add country for more specific results
+
+            async function fetchWeather() {
+                if (!WEATHERBIT_API_KEY || WEATHERBIT_API_KEY.trim() === '') {
+                    weatherDisplay.html(`
+                        <p class="text-danger"><strong>Weather API Key Missing!</strong></p>
+                        <p class="text-danger" style="font-size:0.9em;">Please ensure your Weatherbit.io API key is correctly provided in the JavaScript code.</p>
+                    `);
+                    console.error("Weather API Error: API key is missing.");
+                    fetchWeatherBtn.prop('disabled', false);
+                    return;
+                }
+
+                weatherDisplay.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Fetching weather...');
+                fetchWeatherBtn.prop('disabled', true);
+
+                try {
+                    const apiUrl = `https://api.weatherbit.io/v2.0/current?city=${city}&state=${state}&country=${country}&key=${WEATHERBIT_API_KEY}`;
+                    console.log("Fetching weather from:", apiUrl);
+                    const response = await fetch(apiUrl);
+
+                    if (!response.ok) {
+                        const errorData = await response.json().catch(() => ({}));
+                        const errorMessage = errorData.error || `HTTP error! status: ${response.status}`;
+                        throw new Error(`Weather API Error: ${errorMessage}`);
+                    }
+                    const data = await response.json();
+
+                    if (data && data.data && data.data.length > 0) {
+                        const weather = data.data[0];
+                        const temperature = weather.temp;
+                        const description = weather.weather.description;
+                        const iconCode = weather.weather.icon;
+                        const iconUrl = `https://www.weatherbit.io/static/img/icons/${iconCode}.png`;
+
+                        weatherDisplay.html(`
+                            <img id="weatherIcon" src="${iconUrl}" alt="${description}" onerror="this.onerror=null; this.src='https://placehold.co/80x80/6c757d/ffffff?text=Icon';">
+                            <p id="weatherInfo" class="mb-0">${temperature}°C, ${description}</p>
+                            <p class="text-muted" style="font-size:0.9em;">(${city}, ${state}, ${country})</p>
+                        `);
+                    } else {
+                        weatherDisplay.text("Failed to fetch weather data. Check city/state or API key.");
+                    }
+                } catch (error) {
+                    console.error("Error fetching weather:", error);
+                    weatherDisplay.html(`
+                        <p class="text-danger">Oops! Could not load weather at the moment.</p>
+                        <p class="text-danger" style="font-size:0.9em;">Reason: ${error.message}. Please ensure your Weatherbit.io API key is valid and your location details are correct.</p>
+                    `);
+                } finally {
+                    fetchWeatherBtn.prop('disabled', false);
+                }
+            }
+            fetchWeather(); // Initial weather fetch
+            fetchWeatherBtn.on('click', fetchWeather);
+        });
+
+        // === Analog Clock (Pure JavaScript Canvas) ===
+        const analogCanvas = document.getElementById('analogClock');
+        const analogCtx = analogCanvas ? analogCanvas.getContext('2d') : null;
+        const analogRadius = analogCanvas ? analogCanvas.width / 2 : 0;
+
+        if (analogCtx) {
+            analogCtx.translate(analogRadius, analogRadius);
+        }
+
+        function drawAnalogClock() {
+            if (!analogCtx) return;
+
+            analogCtx.clearRect(-analogRadius, -analogRadius, analogCanvas.width, analogCanvas.height);
+
+            const primaryColor = getComputedStyle(document.body).getPropertyValue('--primary-color').trim();
+            const textColor = getComputedStyle(document.body).getPropertyValue('--text-color').trim();
+            const borderColor = getComputedStyle(document.body).getPropertyValue('--border-color').trim();
+
+            analogCtx.beginPath();
+            analogCtx.arc(0, 0, analogRadius * 0.9, 0, 2 * Math.PI);
+            analogCtx.fillStyle = getComputedStyle(document.body).getPropertyValue('--secondary-bg').trim();
+            analogCtx.fill();
+            analogCtx.strokeStyle = borderColor;
+            analogCtx.lineWidth = 2;
+            analogCtx.stroke();
+
+            analogCtx.beginPath();
+            analogCtx.arc(0, 0, analogRadius * 0.05, 0, 2 * Math.PI);
+            analogCtx.fillStyle = primaryColor;
+            analogCtx.fill();
+
+            const now = new Date();
+            let hour = now.getHours();
+            let minute = now.getMinutes();
+            let second = now.getSeconds();
+
+            hour = (hour % 12) * (Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60));
+            drawHand(analogCtx, hour, analogRadius * 0.5, analogRadius * 0.07, primaryColor);
+
+            minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
+            drawHand(analogCtx, minute, analogRadius * 0.8, analogRadius * 0.05, primaryColor);
+
+            second = (second * Math.PI / 30);
+            drawHand(analogCtx, second, analogRadius * 0.85, analogRadius * 0.02, textColor);
+        }
+
+        function drawHand(ctx, pos, length, width, color) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.lineWidth = width;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = color;
+            ctx.moveTo(0, 0);
+            ctx.rotate(pos);
+            ctx.lineTo(0, -length);
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        setInterval(drawAnalogClock, 1000);
+        drawAnalogClock();
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    $(entry.target).addClass('in-view');
+                } else {
+                    $(entry.target).removeClass('in-view');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+
+    </script>
+</body>
+</html>
