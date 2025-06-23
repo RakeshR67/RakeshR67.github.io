@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rakesh Reddy Yeduru - Professional Profile</title>
-    <!-- Bootstrap CSS -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Bootstrap Icons -->
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Custom CSS -->
+
     <style>
         :root {
-            --primary-color: #34495e; /* Wet Asphalt - Dark Grey for accents */
-            --secondary-accent: #2c3e50; /* Midnight Blue - darker grey for contrast/highlight */
-            --tertiary-accent: #f1c40f; /* Sunflower Yellow - for digital clock/center dots (remains for pop) */
-            --text-color: #34495e; /* Wet Asphalt - dark text on light bg */
-            --bg-color: #ecf0f1; /* Clouds - very light grey */
-            --secondary-bg: #ffffff; /* White - for cards */
-            --card-shadow: 0 8px 20px rgba(0,0,0,0.15); /* More pronounced shadow */
-            --border-color: #bdc3c7; /* Silver - subtle grey border */
-            --badge-bg: #e0e7e9; /* Light blue-grey for badges */
-            --badge-text: #2c3e50; /* Darker text for badges */
-            --muted-text: #7f8c8d; /* Asbestos - muted grey */
+            --primary-color: #34495e; 
+            --secondary-accent: #2c3e50; 
+            --tertiary-accent: #f1c40f; 
+            --text-color: #34495e; 
+            --bg-color: #ecf0f1; 
+            --secondary-bg: #ffffff; 
+            --card-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+            --border-color: #bdc3c7; 
+            --badge-bg: #e0e7e9; 
+            --badge-text: #2c3e50; 
+            --muted-text: #7f8c8d; 
         }
 
         body {
@@ -29,15 +29,15 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding-top: 56px; /* Space for fixed navbar */
-            overflow-x: hidden; /* Prevent horizontal scroll from animations */
-            position: relative; /* For background pseudo-element and overall positioning */
+            padding-top: 56px; 
+            overflow-x: hidden; 
+            position: relative; 
 
-            /* Professional background pattern */
+        
             background-image: radial-gradient(#bdc3c7 1px, transparent 0);
             background-size: 20px 20px;
             background-position: 0 0;
-            background-attachment: fixed; /* Keep background fixed when scrolling */
+            background-attachment: fixed; 
         }
 
         .navbar {
@@ -51,36 +51,36 @@
             font-weight: bold;
             transition: color 0.3s ease;
         }
-        .nav-link { /* Targeting nav links specifically */
-            color: black !important; /* Make nav links black */
-            font-weight: bold !important; /* Make nav links bold */
+        .nav-link { 
+            color: black !important; 
+            font-weight: bold !important; 
             transition: color 0.3s ease;
         }
         .navbar-brand:hover, .nav-link:hover {
             color: var(--secondary-accent) !important;
-            transform: scale(1.05); /* Slight scale on hover */
+            transform: scale(1.05); 
         }
         .navbar-toggler-icon {
             filter: none;
         }
         .header-bg {
             background-color: var(--primary-color);
-            color: #ffffff; /* This ensures text in header is white */
+            color: #ffffff; 
             padding: 2rem 0;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.25);
             transition: background-color 0.5s ease;
         }
-        .header-bg h1 { /* Specifically target h1 in header-bg */
-            color: #ffffff !important; /* Force white color for the main name heading */
+        .header-bg h1 { 
+            color: #ffffff !important; 
         }
 
 
-        /* Headings Styling for other sections */
+    
         h1:not(.header-bg h1), h2, h3, h4, h5, h6, .section-title {
-            color: black !important; /* Force black color for all other headings */
-            font-weight: bold !important; /* Force bold for all headings */
+            color: black !important; 
+            font-weight: bold !important;
         }
 
         .profile-img-container {
@@ -100,17 +100,17 @@
             transition: box-shadow 0.3s ease;
         }
         .profile-img-container:hover {
-            box-shadow: 0 0 25px var(--primary-color); /* Pulse shadow on hover */
+            box-shadow: 0 0 25px var(--primary-color); 
         }
         .profile-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block; /* Ensure it behaves as a block element */
-            max-width: 100%; /* Ensure it scales within its container */
+            display: block; 
+            max-width: 100%; 
         }
         .section-title {
-            border-bottom: 2px solid var(--primary-color); /* Border remains accent color */
+            border-bottom: 2px solid var(--primary-color); 
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
             text-align: center;
@@ -122,16 +122,16 @@
             box-shadow: var(--card-shadow);
             margin-bottom: 2.5rem;
             border: 1px solid var(--border-color);
-            transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.3s; /* For scroll animation */
-            opacity: 0; /* Initially hidden for animation */
-            transform: translateY(30px); /* Start position for animation */
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.3s; 
+            opacity: 0; 
+            transform: translateY(30px); 
         }
         .card.in-view {
             opacity: 1;
             transform: translateY(0);
         }
         .card:hover {
-            box-shadow: 0 12px 25px rgba(0,0,0,0.2); /* Lift on hover */
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2); 
         }
         .footer {
             background-color: var(--secondary-bg);
@@ -153,7 +153,7 @@
         }
         .contact-info a:hover {
             text-decoration: underline;
-            color: var(--secondary-accent); /* Darker grey on hover */
+            color: var(--secondary-accent); 
         }
         .project-link {
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -194,14 +194,14 @@
             border-color: var(--primary-color);
             transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
             color: #ffffff;
-            position: relative; /* For button pulse */
+            position: relative; 
             overflow: hidden;
             z-index: 1;
         }
         .btn-primary:hover {
-            background-color: var(--secondary-accent); /* Darker grey on hover */
-            border-color: var(--secondary-accent); /* Darker grey on hover */
-            transform: translateY(-2px) scale(1.02); /* Slight lift and scale */
+            background-color: var(--secondary-accent); 
+            border-color: var(--secondary-accent); 
+            transform: translateY(-2px) scale(1.02); 
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         .btn-primary::before {
@@ -222,7 +222,7 @@
             height: 200%;
         }
 
-        /* Styles for clocks */
+    
         #analogClock {
             background-color: var(--secondary-bg);
             border: 2px solid var(--border-color);
@@ -235,7 +235,7 @@
         #digitalClock {
             font-size: 2.5rem;
             font-weight: bold;
-            color: black !important; /* Changed to black */
+            color: black !important; 
             text-align: center;
             margin-top: 1rem;
             transition: color 0.3s;
@@ -256,7 +256,7 @@
             margin-bottom: 0.5rem;
         }
         #emailDisplay {
-            color: var(--secondary-accent); /* Use the new darker grey for email */
+            color: var(--secondary-accent); 
             font-weight: bold;
             margin-bottom: 1rem;
             display: none;
@@ -265,7 +265,7 @@
 </head>
 <body>
 
-    <!-- Fixed Navigation Bar -->
+
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#summary-section">
@@ -343,11 +343,11 @@
             <div class="contact-info text-center">
                 <p><i class="bi bi-geo-alt-fill me-2"></i>817 Patterson Rd Apt A, Dayton, OH-45419</p>
                 <p><i class="bi bi-phone-fill me-2"></i>+1 (937) 313-6483</p>
-                <p id="emailDisplay">Email: <a href="mailto:yedururl@udayton.edu">yedururl@udayton.edu</a></p>
+                <p id="emailDisplay">Email: <a href="mailto:yedurur1@udayton.edu">yedururl@udayton.edu</a></p>
                 <button id="toggleEmailBtn" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Show/Hide Email</button>
                 <!-- Add more contact info if available, e.g., LinkedIn -->
-                <p class="mt-3"><i class="bi bi-linkedin me-2"></i><a href="#" target="_blank">LinkedIn Profile (Add your LinkedIn URL)</a></p>
-                <p><i class="bi bi-github me-2"></i><a href="https://github.com/your-github-username" target="_blank">GitHub Profile (Add your GitHub URL)</a></p>
+                <p class="mt-3"><i class="bi bi-linkedin me-2"></i><a href="https://www.linkedin.com/in/rakeshyeduru/" target="_blank">LinkedIn Profile (Add your LinkedIn URL)</a></p>
+                <p><i class="bi bi-github me-2"></i><a href="https://github.com/RakeshR67/waph-yedurur1" target="_blank">GitHub Profile (Add your GitHub URL)</a></p>
             </div>
         </section>
 
